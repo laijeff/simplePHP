@@ -12,6 +12,8 @@ class Prourl
                 (stripos($_SERVER['REQUEST_URI'],'/index.php') !== false)?
                  str_replace('/index.php','',$_SERVER['REQUEST_URI'])
                  :$_SERVER['REQUEST_URI'];
+
+			$pathinfo = rtrim($pathinfo, '?'.$_SERVER['QUERY_STRING']);
     
 			//获取 pathinfo
 			$pathinfo = explode('/', trim($pathinfo, "/"));

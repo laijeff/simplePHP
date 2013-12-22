@@ -7,6 +7,12 @@ class IndexController extends Controller
 	}
     public function testModel()
     {
-        $this->render('test',array('name'=>'jeff'));
+        //$this->render('test',array('name'=>'jeff'));
+	$user = $this->load_model('user');
+	$user->index();
     }
+    public function test()
+    {
+    }
+    	
 }

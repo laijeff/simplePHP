@@ -37,4 +37,12 @@ class Controller
         //直接显示
         #$this->loadFile(APP.SEP.'views'.SEP.$viewName.'.tpl');
     }
+
+    public function db()
+    {
+         $this->loadFile(FRAME.SEP.'database'.SEP.'DSN.php');
+         $this->loadFile(FRAME.SEP.'database'.SEP.'DB.php');
+         return new DB();
+    }
+
 }

@@ -1,25 +1,16 @@
 <?php
 class DB
 {
-    private static $instance;
-    private function __construct()
-    {
-    }
     //连接PDO
     public static function Connect()
     {
-        if(self::$instance == null)
-        {
-            $dsn="mysql:host=".MYSQL_HOST.";dbname=".MYSQL_DBNAME;
-            $pdo=new PDO($dsn, MYSQL_USER, MYSQL_PASS, array(PDO::ATTR_PERSISTENT=>true));
-        }
-        return self::$instance;
+        return DSN::Connect();
     }
     //执行绑定参数
     public function prepare($sql,$data)
     {
     	$pdo = self::Connect();
-	$sth = $pod->prepare($sql);
+	$sth = $pdo->prepare($sql);
 	$sth->execute($data);
 	return $sth;
     }
@@ -64,14 +55,14 @@ class DB
     public function add($sql,$data)
     {
     	$pdo = self::Connect();
-	$sth = $pod->prepare($sql);
+	$sth = $pdo->prepare($sql);
 	$sth->execute($data);
 	return $pdo->lastInsertId();
     }
     //绑定参数 更新 删除
     public function oper($sql,$data)
     {
-    	$result = prepare($sql,$data)
+    	$result = $this->prepare($sql,$data);
 	return empty($result) ? 0 : $result->rowCount();
     }
 }

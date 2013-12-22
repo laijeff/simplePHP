@@ -15,6 +15,7 @@ define('APP', 'application');
 require_once(CORE.SEP.'controller.php');
 require_once(CORE.SEP.'model.php');
 require_once(CORE.SEP.'view.php');
+require_once(FRAME.SEP.'config'.SEP.'config.php');
 //装入URL
 $urlPath=CORE.SEP.'pathinfo.php';
 require_once($urlPath);
